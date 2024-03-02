@@ -1,5 +1,5 @@
 //import _https from "https";
-import _http from "http";
+import _https from "https";
 import _url from "url";
 import _fs from "fs";
 import _express from "express";
@@ -19,9 +19,15 @@ const TOKEN = process.env.TOKEN;
 
 let error_page;
 
-app.listen(PORT, () => {
+const PRIVATE_KEY = _fs.readFileSync("./keys/privateKey.pem", "utf8");
+const CERTIFICATE = _fs.readFileSync("./keys/certificate.crt", "utf8");
+const ENCRYPTION_KEY = _fs.readFileSync("./keys/encryptionKey.txt", "utf8");
+const CREDENTIALS = { "key": PRIVATE_KEY, "cert": CERTIFICATE };
+const https_server = _https.createServer(CREDENTIALS, app);
+
+https_server.listen(PORT, () => {
     init();
-    console.log("Proxy server started on port " + PORT);
+    console.log("Proxy server listening on port " + PORT);
 });
 
 function init() {
@@ -84,14 +90,6 @@ app.get("/api/:collection", (req, res, next) => {
         res.status(500).send(err.message);
     });
 });
-
-app.post("/api/", (req, res, next) => { });
-
-app.patch("/api/", (req, res, next) => { });
-
-app.put("/api/", (req, res, next) => { });
-
-app.delete("/api/", (req, res, next) => { });
 
 //#endregion
 
