@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HomeService } from '../../services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeComponent {
   @Input() playerTag: string = '';
+
+  constructor(private homeService: HomeService) { }
+
+  ngOnInit() {
+    this.homeService.getBrawlers();
+  }
 }

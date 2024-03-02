@@ -1,16 +1,7 @@
-header {
-    background-color: #ffd700;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    color: #000;
-    margin: 0;
-    font-size: 40pt;
+nav {
+    background-color: #ffd700 !important;
 }
 
 img {
     height: 50px;
-    float: right;
 }
