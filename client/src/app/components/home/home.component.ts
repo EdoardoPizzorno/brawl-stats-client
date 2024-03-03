@@ -9,7 +9,7 @@ import { HomeService } from '../../services/home.service';
 export class HomeComponent {
   @Input() playerTag: string = '';
 
-  constructor(private homeService: HomeService) { }
+  constructor(public homeService: HomeService) { }
 
   ngOnInit() {
     this.homeService.getBrawlers();

@@ -6,13 +6,17 @@ import { DataStorageService } from './data-storage.service';
 })
 export class HomeService {
 
+  brawlers: any[] = [];
+
   constructor(private dataStorage: DataStorageService) { }
 
   getBrawlers() {
-    this.dataStorage.sendRequest('GET', '/brawlers').subscribe(
-      (response) => {
-        console.log(response);
-      }
-    );
+    this.dataStorage.sendRequest('GET', '/brawlers')
+      .then((response: any) => {
+        this.brawlers = response.data.items;
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 }

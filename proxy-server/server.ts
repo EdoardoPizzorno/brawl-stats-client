@@ -1,4 +1,4 @@
-//import _https from "https";
+import _http from "http";
 import _https from "https";
 import _url from "url";
 import _fs from "fs";
@@ -13,15 +13,15 @@ _dotenv.config({ "path": ".env" });
 
 const app = _express();
 
-const _URL = "https://developer.brawlstars.com/api/";
+const _URL = "https://api.brawlstars.com/v1/";
 const PORT: number = 3000;
 const TOKEN = process.env.TOKEN;
 
 let error_page;
 
-const PRIVATE_KEY = _fs.readFileSync("./keys/privateKey.pem", "utf8");
-const CERTIFICATE = _fs.readFileSync("./keys/certificate.crt", "utf8");
-const ENCRYPTION_KEY = _fs.readFileSync("./keys/encryptionKey.txt", "utf8");
+const PRIVATE_KEY = _fs.readFileSync("../keys/privateKey.pem", "utf8");
+const CERTIFICATE = _fs.readFileSync("../keys/certificate.crt", "utf8");
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
 const CREDENTIALS = { "key": PRIVATE_KEY, "cert": CERTIFICATE };
 const https_server = _https.createServer(CREDENTIALS, app);
 
@@ -29,6 +29,13 @@ https_server.listen(PORT, () => {
     init();
     console.log("Proxy server listening on port " + PORT);
 });
+
+/*const http_server = _http.createServer(app);
+
+http_server.listen(PORT, () => {
+    init();
+    console.log("Proxy server listening on port " + PORT);
+});*/
 
 function init() {
     _fs.readFile("./static/error.html", function (err, data) {
@@ -74,22 +81,39 @@ const corsOptions = {
 };
 app.use("/", _cors(corsOptions));
 
+app.use("/api/", (req: any, res: any, next: any) => {
+    let token = req.headers["authorization"];
+    res.setHeader("authorization", "Bearer " + TOKEN);
+    res.setHeader("access-control-expose-headers", "authorization");
+    if (!token) {
+        res.status(200).send("Token setted");
+    }
+    else {
+        next();
+    }
+});
+
 //#endregion
 
 //#region ROUTES
 
 app.get("/api/:collection", (req, res, next) => {
     let collection = req.params.collection;
-    res.setHeader("authorization", TOKEN);
-    res.setHeader("access-control-expose-headers", "authorization");
-    _axios.get(_URL + collection).then((response) => {
-        console.log(response)
-        res.send(response.data);
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).send(err.message);
-    });
+
+    _axios.get(_URL + collection, { headers: { "Authorization": "Bearer " + TOKEN } })
+        .then((response) => {
+            res.status(200).send(response.data);
+        })
+        .catch((err) => {
+            res.status(err.response.status).send(err.message);
+        });
 });
+
+//#region INTERNAL FUNCTIONS
+
+
+
+//#endregion
 
 //#endregion
 

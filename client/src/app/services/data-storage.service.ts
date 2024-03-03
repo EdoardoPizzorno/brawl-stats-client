@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import _axios from "axios";
 
 @Injectable({
   providedIn: 'root'
@@ -8,24 +7,42 @@ import { Observable } from 'rxjs';
 export class DataStorageService {
   private REST_API_SERVER = "https://localhost:3000/api";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor() {
+    _axios.interceptors.response.use((response) => {
+      let token = response.headers["authorization"];
+      localStorage.setItem("BRAWL_STATS_TOKEN", token);
+      return response;
+    });
 
-  public sendRequest(method: string, resource: string, params: any = {}): Observable<any> {
+    _axios.interceptors.request.use((config) => {
+      let token = localStorage.getItem("BRAWL_STATS_TOKEN");
+      if (token) {
+        if (token === "undefined") {
+          localStorage.removeItem("BRAWL_STATS_TOKEN");
+        } else {
+          config.headers["authorization"] = token;
+        }
+      }
+      return config;
+    });
+  }
+
+  public sendRequest(method: string, resource: string, params: any = {}): Promise<any> {
     resource = this.REST_API_SERVER + resource;
 
     switch (method.toUpperCase()) {
       case 'GET':
-        return this.httpClient.get(resource, { params });
+        return _axios.get(resource, { params });
       case 'POST':
-        return this.httpClient.post(resource, { "body": params });
+        return _axios.post(resource, { "body": params });
       case 'PATCH':
-        return this.httpClient.patch(resource, { "body": params });
+        return _axios.patch(resource, { "body": params });
       case 'PUT':
-        return this.httpClient.put(resource, params);
+        return _axios.put(resource, params);
       case 'DELETE':
-        return this.httpClient.delete(resource);
+        return _axios.delete(resource);
       default:
-        return this.httpClient.get(resource);
+        return _axios.get(resource);
     }
   }
 }
