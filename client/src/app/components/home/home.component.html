@@ -4,10 +4,10 @@
 </div>
 
 <div class="container my-4">
-    <a *ngFor="let brawler of homeService.brawlers" class="card" [routerLink]="['/brawler/{{brawler.id}}']">
+    <button *ngFor="let brawler of homeService.brawlers" class="card" (click)="onBrawlerClick(brawler.id)">
         <img src="../../../assets/brawl-logo.png" class="card-img-top" alt="{{brawler.name}}">
         <div class="card-body">
             <h5 class="card-title">{{brawler.name}}</h5>
         </div>
-    </a>
+    </button>
 </div>
