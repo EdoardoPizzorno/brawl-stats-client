@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrawlerComponent } from './components/brawler/brawler.component';
+import { BrawlerDetailsComponent } from './components/brawler-details/brawler-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrawlerComponent } from './components/brawler/brawler.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    BrawlerComponent
+    BrawlerComponent,
+    BrawlerDetailsComponent
   ],
   imports: [
     BrowserModule,

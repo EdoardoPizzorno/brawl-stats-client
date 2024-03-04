@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-brawler',
@@ -8,16 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BrawlerComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor() { }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const param1 = params['parametro1'];
-      const param2 = params['parametro2'];
-  
-      console.log('Parametro 1:', param1);
-      console.log('Parametro 2:', param2);
-    });
-  }
+  @Input() brawler: any;
 
 }
