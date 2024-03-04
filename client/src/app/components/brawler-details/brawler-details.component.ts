@@ -13,7 +13,6 @@ export class BrawlerDetailsComponent {
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      console.log(params.id);
       this.brawlerService.getBrawler(params.id);
     });
   }

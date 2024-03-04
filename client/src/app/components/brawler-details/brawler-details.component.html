@@ -1,8 +1,16 @@
 <div class="brawler-details">
     <h2>{{brawlerService.brawler.name}}</h2>
     <img src="../../../assets/brawl-logo.png" alt="Immagine {{brawlerService.brawler.name}}">
-    <p><strong>Descrizione:</strong> </p>
-    <p><strong>Salute:</strong> XXXX</p>
-    <p><strong>Danno:</strong> XXXX</p>
-    <p><strong>Ricarica:</strong> XXXX</p>
+    <div class="container text-center">
+        <hr>
+        <h3>-GADGETS</h3>
+        <ul class="list-group">
+            <li *ngFor="let gadget of brawlerService.brawler.gadgets">{{gadget.name}}</li>
+        </ul>
+        <hr>
+        <h3>-STARPOWERS</h3>
+        <ul class="list-group">
+            <li *ngFor="let starPower of brawlerService.brawler.starPowers">{{starPower.name}}</li>
+        </ul>
+    </div>
 </div>

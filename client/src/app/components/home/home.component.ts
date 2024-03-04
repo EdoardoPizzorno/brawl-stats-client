@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
