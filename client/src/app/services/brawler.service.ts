@@ -13,7 +13,6 @@ export class BrawlerService {
   getBrawler(id: string) {
     this.dataStorage.sendRequest('GET', "/brawlers/" + id)
       .then((response: any) => {
-        console.log(response);
         this.brawler = response.data;
         console.log(this.brawler)
       })

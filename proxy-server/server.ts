@@ -13,7 +13,7 @@ _dotenv.config({ "path": ".env" });
 
 const app = _express();
 
-const _URL = "https://api.brawlstars.com/v1/";
+const baseURL = "https://api.brawlstars.com/v1/";
 const PORT: number = 3000;
 const TOKEN = process.env.TOKEN;
 
@@ -100,7 +100,22 @@ app.use("/api/", (req: any, res: any, next: any) => {
 app.get("/api/:collection", (req, res, next) => {
     let collection = req.params.collection;
 
-    _axios.get(_URL + collection, { headers: { "Authorization": "Bearer " + TOKEN } })
+    const _URL = baseURL + collection;
+    _axios.get(_URL, { headers: { "Authorization": "Bearer " + TOKEN } })
+        .then((response) => {
+            res.status(200).send(response.data);
+        })
+        .catch((err) => {
+            res.status(err.response.status).send(err.message);
+        });
+});
+
+app.get("/api/:collection/:id", (req, res, next) => {
+    let collection = req.params.collection;
+    let id = req.params.id;
+
+    const _URL = baseURL + collection + "/" + id;
+    _axios.get(_URL, { headers: { "Authorization": "Bearer " + TOKEN } })
         .then((response) => {
             res.status(200).send(response.data);
         })
