@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BrawlerService } from '../../services/brawler.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { BrawlerService } from '../../services/brawler.service';
 })
 export class BrawlerDetailsComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router, public brawlerService: BrawlerService) { }
+  constructor(private route: ActivatedRoute, public brawlerService: BrawlerService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {

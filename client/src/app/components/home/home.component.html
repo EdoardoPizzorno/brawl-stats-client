@@ -1,6 +1,7 @@
 <div style="text-align: center; margin-top: 50px;">
     <h1>INSERISCI TAG</h1>
-    <input type="text" placeholder="Player Tag" [(ngModel)]="playerTag">
+    <input type="text" placeholder="Player Tag" [(ngModel)]="playerTag" (keyup.enter)="onPlayerSearch()">
+    <button class="btn btn-primary" (click)="onPlayerSearch()">Search</button>
 </div>
 
 <div class="container my-4">

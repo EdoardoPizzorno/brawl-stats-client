@@ -113,8 +113,8 @@ app.get("/api/:collection", (req, res, next) => {
 app.get("/api/:collection/:id", (req, res, next) => {
     let collection = req.params.collection;
     let id = req.params.id;
-
-    const _URL = baseURL + collection + "/" + id;
+    
+    const _URL = baseURL + collection + "/%23" + id; // %23 is the '#' character
     _axios.get(_URL, { headers: { "Authorization": "Bearer " + TOKEN } })
         .then((response) => {
             res.status(200).send(response.data);

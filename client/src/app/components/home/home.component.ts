@@ -9,15 +9,22 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
   @Input() playerTag: string = '';
+  cookiePlayerTag: string = '';
 
-  constructor(public homeService: HomeService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(public homeService: HomeService, private router: Router, private cookieService: CookieService) {
     this.homeService.getBrawlers();
+    this.playerTag = this.cookieService.get('PLAYER_TAG');
   }
 
   onBrawlerClick(id: string) {
     this.router.navigateByUrl("brawler/" + id);
   }
+
+  onPlayerSearch() {
+    this.playerTag = (this.playerTag.split("#").join("")).toUpperCase();
+    this.router.navigateByUrl("player/" + this.playerTag);
+  }
+
 }

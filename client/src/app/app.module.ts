@@ -10,6 +10,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrawlerComponent } from './components/brawler/brawler.component';
 import { BrawlerDetailsComponent } from './components/brawler-details/brawler-details.component';
+import { CookieService } from 'ngx-cookie-service';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { BrawlerDetailsComponent } from './components/brawler-details/brawler-de
     HeaderComponent,
     FooterComponent,
     BrawlerComponent,
-    BrawlerDetailsComponent
+    BrawlerDetailsComponent,
+    PlayerDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { BrawlerDetailsComponent } from './components/brawler-details/brawler-de
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
