@@ -1,11 +1,11 @@
 <div class="wrapper">
-    <h2 class="clubName"> {{clubService.club.name}} </h2>
+    <h1 class="clubName"> {{clubService.club.name}} </h1>
     Descrizione:
     <h3>{{clubService.club.description}}</h3>
     Trofei del Clan:
-    <h3>{{clubService.club.trophies}}</h3>
+    <h3> <i class="fas fa-trophy"></i> {{clubService.club.trophies}}</h3>
     Trofei Richiesti:
-    <h3>{{clubService.club.requiredTrophies}}</h3>
+    <h3> {{clubService.club.requiredTrophies}}</h3>
 </div>
 
 <div class="row">
@@ -14,7 +14,8 @@
         <div *ngFor="let member of clubService.club.members" class="member" value="member.tag"
             (click)="homeService.onPlayerSearch(member.tag)">
             {{member.name}} ({{member.role}})
-            <hr> <i class="fas fa-trophy"></i> {{member.trophies}}
+            <hr>
+            <h3> <i class="fas fa-trophy"></i> {{member.trophies}} </h3>
         </div>
     </div>
 </div>
