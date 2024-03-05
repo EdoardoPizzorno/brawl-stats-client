@@ -2,14 +2,18 @@
     font-family: "Nougat ExtraBlack";
     src: url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.eot");
     src: url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.svg#Nougat ExtraBlack")format("svg");
+        url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.svg#Nougat ExtraBlack")format("svg");
 }
 
 * {
     margin: 0;
     padding: 0;
     font-family: "Nougat ExtraBlack";
+}
+
+::selection {
+    background-color: #fff4b7;
 }

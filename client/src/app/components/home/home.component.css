@@ -36,3 +36,9 @@ button {
     color: black;
     text-decoration: none;
 }
+
+img {
+    margin: 10px;
+    width: 180px;
+    border-radius: 5px;
+}

@@ -4,20 +4,19 @@ import { DataStorageService } from './data-storage.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BrawlerService {
+export class ClubService {
 
-  brawler: any = {};
+  club: any = {};
 
   constructor(private dataStorage: DataStorageService) { }
 
-  getBrawler(id: string) {
-    this.dataStorage.sendRequest('GET', "/brawlers/" + id)
-      .then((response: any) => {
-        this.brawler = response.data;
+  getClub(tag: string) {
+    this.dataStorage.sendRequest("GET", "/clubs/" + tag)
+      .then((response) => {
+        this.club = response.data;
       })
-      .catch((err: any) => {
+      .catch((err) => {
         console.log(err);
       });
   }
-
 }

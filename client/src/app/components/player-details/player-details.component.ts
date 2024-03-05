@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { PlayerService } from '../../services/player.service';
 
@@ -13,7 +13,7 @@ export class PlayerDetailsComponent {
   playerTag: string = '';
   cookiePlayerTag: string = '';
 
-  constructor(private route: ActivatedRoute, private cookieService: CookieService, public playerService: PlayerService) {
+  constructor(private route: ActivatedRoute, private router: Router, private cookieService: CookieService, public playerService: PlayerService) {
     this.cookiePlayerTag = this.cookieService.get('PLAYER_TAG');
 
     if (this.cookiePlayerTag != '') {
@@ -25,7 +25,7 @@ export class PlayerDetailsComponent {
     this.route.params.subscribe((params: any) => {
       this.playerService.getPlayer(params.tag);
       this.playerTag = params.tag;
-      
+
       if (this.playerTag != this.cookiePlayerTag)
         this.setCookie();
     });
@@ -33,6 +33,11 @@ export class PlayerDetailsComponent {
 
   setCookie() {
     this.cookieService.set('PLAYER_TAG', this.playerTag, 365, '/');
+  }
+
+  onClubClick() {
+    let clubTag = (this.playerService.player.club.tag).split("#").join("");
+    this.router.navigateByUrl("club/" + clubTag);
   }
 
 }

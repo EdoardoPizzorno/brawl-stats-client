@@ -22,9 +22,4 @@ export class HomeComponent {
     this.router.navigateByUrl("brawler/" + id);
   }
 
-  onPlayerSearch() {
-    this.playerTag = (this.playerTag.split("#").join("")).toUpperCase();
-    this.router.navigateByUrl("player/" + this.playerTag);
-  }
-
 }

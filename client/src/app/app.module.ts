@@ -8,10 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BrawlerComponent } from './components/brawler/brawler.component';
 import { BrawlerDetailsComponent } from './components/brawler-details/brawler-details.component';
 import { CookieService } from 'ngx-cookie-service';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { ClubComponent } from './components/club/club.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +19,9 @@ import { PlayerDetailsComponent } from './components/player-details/player-detai
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    BrawlerComponent,
     BrawlerDetailsComponent,
-    PlayerDetailsComponent
+    PlayerDetailsComponent,
+    ClubComponent
   ],
   imports: [
     BrowserModule,

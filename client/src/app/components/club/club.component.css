@@ -1,0 +1,47 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #ccc;
+    text-align: center;
+}
+
+.row {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #ccc;
+    text-align: center;
+}
+
+.member {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #ccc;
+    text-align: center;
+}
+
+.member:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+h2.clubName {
+    color: rgb(185, 185, 15);
+}
+
+p h3 {
+    font-size: 24pt;
+}
+
+i {
+    color: rgb(185, 185, 15);
+    text-decoration: underline;
+}

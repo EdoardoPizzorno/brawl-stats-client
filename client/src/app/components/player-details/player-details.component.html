@@ -4,8 +4,8 @@
             [ngClass]="{red: playerService.trophiesDrawdown < 0, green: playerService.trophiesDrawdown >= 0}">
             [{{playerService.trophiesDrawdown}}%]</p>
     </h4>
-    <img src="../../../assets/brawl-logo.png" alt="Immagine {{ playerService.player.name }}"><br>
-    <h5>Club: <i>{{playerService.player.club.name}}</i></h5>
+    <img src="../../../assets/brawl-logo.png" alt="Immagine {{ playerService.player.name }}"><br><br>
+    <h5>Club: <i (click)="onClubClick()">{{playerService.player.club.name}}</i></h5>
     <h6>Experience Level: <u>{{playerService.player.expLevel}}</u></h6>
     <h6>Solo Victories: <u>{{playerService.player.soloVictories}}</u></h6>
     <h6>Duo Victories: <u>{{playerService.player.duoVictories}}</u></h6>
