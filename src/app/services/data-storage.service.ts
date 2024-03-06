@@ -5,7 +5,7 @@ import _axios from "axios";
   providedIn: 'root'
 })
 export class DataStorageService {
-  private REST_API_SERVER = "https://brawl-stats-server.onrender.com/api";
+  private REST_API_SERVER = "https://localhost:3000/api";
 
   constructor() {
     _axios.interceptors.response.use((response: any) => {
