@@ -19,8 +19,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.ts",
-    "prebuild": "cd backend && npm run build",
-    "build": "cd frontend && npm run build"
+    "prebuild": "cd frontend && npm run build",
+    "build": "cd backend && npm run build"
   },
   "keywords": [
     "Node",
