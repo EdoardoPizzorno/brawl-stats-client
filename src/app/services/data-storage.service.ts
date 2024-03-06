@@ -8,13 +8,13 @@ export class DataStorageService {
   private REST_API_SERVER = "https://brawl-stats-server.onrender.com/api";
 
   constructor() {
-    _axios.interceptors.response.use((response) => {
+    _axios.interceptors.response.use((response: any) => {
       let token = response.headers["authorization"];
       localStorage.setItem("BRAWL_STATS_TOKEN", token);
       return response;
     });
 
-    _axios.interceptors.request.use((config) => {
+    _axios.interceptors.request.use((config: any) => {
       let token = localStorage.getItem("BRAWL_STATS_TOKEN");
       if (token) {
         if (token === "undefined") {
