@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import Swal from 'sweetalert2';
-import 'sweetalert2/src/sweetalert2.scss';
 import { ParseService } from '../../services/parser.service';
 
 @Component({
@@ -14,8 +13,6 @@ export class BattlesComponent {
   constructor(private parseService: ParseService) { }
 
   showBattleDetails() {
-    console.log(this.battle.battle)
-
     Swal.fire({
       title: 'RANK #' + this.battle.battle.rank,
       html: this.parseService.parseHtml(this.battle),
