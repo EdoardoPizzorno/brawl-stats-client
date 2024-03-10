@@ -8,6 +8,18 @@
         url("https://db.onlinewebfonts.com/t/d8594583bad1b9485b42ef4d33f50070.svg#Nougat ExtraBlack")format("svg");
 }
 
+:root {
+    --primary-color: #fdb721;
+    --primary-color-light: #fff4b7;
+    --primary-color-dark: #c48f00;
+    --secondary-color: #2d6efe;
+    --secondary-color-light: #7e9eff;
+    --secondary-color-dark: #1f4b8e;
+    --gold: #fbff00;
+    --gold-light: #f0e5b2;
+    --gold-dark: #c4c400;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,5 +27,18 @@
 }
 
 ::selection {
-    background-color: #fff4b7;
+    background-color: var(--primary-color);
+}
+
+.wrapper {
+    margin: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 var(--primary-color);
+    background-color: var(--primary-color-light)
+}
+
+i.fas.fa-trophy {
+    color: var(--gold-dark);
 }

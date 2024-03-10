@@ -1,11 +1,11 @@
 <div style="text-align: center; margin-top: 50px;">
     <h1>INSERISCI TAG</h1>
     <input type="text" placeholder="Player Tag" [(ngModel)]="playerTag" (keyup.enter)="homeService.onPlayerSearch(playerTag)">
-    <button class="btn btn-primary" (click)="homeService.onPlayerSearch(playerTag)">Search</button>
+    <button class="btn btn-warning" (click)="homeService.onPlayerSearch(playerTag)">Search</button>
 </div>
 
 <div class="container my-4">
-    <div class="card" *ngFor="let brawler of homeService.brawlers" (click)="onBrawlerClick(brawler.id)">
+    <div class="wrapper card" *ngFor="let brawler of homeService.brawlers" (click)="onBrawlerClick(brawler.id)">
         <img src="../../../assets/brawl-logo.png" class="card-img-top" alt="{{brawler.name}}">
         <div class="card-body">
             <h5 class="card-title">{{brawler.name}}</h5>

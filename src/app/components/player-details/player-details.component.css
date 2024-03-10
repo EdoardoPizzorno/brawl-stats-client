@@ -10,23 +10,16 @@ img {
     border-radius: 5px;
 }
 
-.wrapper {
-    margin: 50px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 #ccc;
-    text-align: center;
-}
-
-i {
-    color: rgb(185, 185, 15);
+strong {
+    color: var(--secondary-color);
     text-decoration: underline;
+    font-size: 20pt;
 }
 
-i:hover {
-    color: rgb(185, 185, 15);
+strong:hover {
+    color: var(--secondary-color-dark);
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .red {
