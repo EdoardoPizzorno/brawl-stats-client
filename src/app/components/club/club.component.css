@@ -22,8 +22,9 @@
     text-align: center;
 }
 
-.member {
+.player {
     display: inline-block;
+    background-color: rgb(255, 244, 183);
     width: 30%;
     margin: 10px;
     padding: 10px;
@@ -33,14 +34,26 @@
     text-align: center;
 }
 
-.member:hover {
+.vicePresident {
+    background-color: rgb(255, 209, 139);
+}
+
+.president {
+    background-color: rgb(255, 124, 124);
+}
+
+.player:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.5s;
 }
 
 .clubName {
     color: rgb(185, 185, 15);
+}
+
+.memberList, .wrapper {
+    background-color: rgb(255, 251, 231);
 }
 
 p h3 {
