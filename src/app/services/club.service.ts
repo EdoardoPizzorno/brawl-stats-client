@@ -15,7 +15,6 @@ export class ClubService {
       .then((response) => {
         this.club = response.data;
         this.club.type = this.club.type == "inviteOnly" ? "Su invito" : (this.club.type == "closed" ? "Chiuso" : "Aperto");
-        console.log(this.club)
       })
       .catch((err) => {
         console.log(err);

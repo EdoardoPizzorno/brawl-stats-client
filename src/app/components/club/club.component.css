@@ -4,15 +4,6 @@
     justify-content: center;
 }
 
-.row {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 #ccc;
-    text-align: center;
-}
-
 .player {
     display: inline-block;
     background-color: var(--primary-color-light);
@@ -41,10 +32,6 @@
 
 .clubName {
     color: var(--secondary-color-dark);
-}
-
-.memberList {
-    background-color: var(--primary-color-dark);
 }
 
 p h3 {

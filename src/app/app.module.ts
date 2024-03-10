@@ -12,6 +12,7 @@ import { BrawlerDetailsComponent } from './components/brawler-details/brawler-de
 import { CookieService } from 'ngx-cookie-service';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { ClubComponent } from './components/club/club.component';
+import { BattlesComponent } from './components/battles/battles.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ClubComponent } from './components/club/club.component';
     FooterComponent,
     BrawlerDetailsComponent,
     PlayerDetailsComponent,
-    ClubComponent
+    ClubComponent,
+    BattlesComponent
   ],
   imports: [
     BrowserModule,

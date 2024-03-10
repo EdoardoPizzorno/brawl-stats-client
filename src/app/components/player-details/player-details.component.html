@@ -10,3 +10,11 @@
     <h6>Solo Victories: <u>{{playerService.player.soloVictories}}</u></h6>
     <h6>Duo Victories: <u>{{playerService.player.duoVictories}}</u></h6>
 </div>
+
+<div class="row battleLogList">
+    <div class="my-4">
+        <h1>BATTLE LOG</h1>
+        <app-battles *ngFor="let battle of playerService.battleLog; index as i" [battle]="battle"
+            [index]="i"></app-battles>
+    </div>
+</div>

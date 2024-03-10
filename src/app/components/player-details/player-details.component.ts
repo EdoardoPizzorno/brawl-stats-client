@@ -23,9 +23,11 @@ export class PlayerDetailsComponent {
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
-      this.playerService.getPlayer(params.tag);
       this.playerTag = params.tag;
-
+      
+      this.playerService.getPlayer(this.playerTag);
+      this.playerService.getBattleLog(this.playerTag);
+      
       if (this.playerTag != this.cookiePlayerTag)
         this.setCookie();
     });
