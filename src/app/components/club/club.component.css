@@ -52,7 +52,8 @@
     color: rgb(185, 185, 15);
 }
 
-.memberList, .wrapper {
+.memberList,
+.wrapper {
     background-color: rgb(255, 251, 231);
 }
 
