@@ -14,7 +14,6 @@
 <div class="row battleLogList">
     <div class="my-4">
         <h1>BATTLE LOG</h1>
-        <app-battles *ngFor="let battle of playerService.battleLog; index as i" [battle]="battle"
-            [index]="i"></app-battles>
+        <app-battles *ngFor="let battle of playerService.battleLog" [battle]="battle"></app-battles>
     </div>
 </div>

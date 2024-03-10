@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
+import { ParseService } from '../../services/parser.service';
 
 @Component({
   selector: 'app-battles',
@@ -7,6 +10,19 @@ import { Component, Input } from '@angular/core';
 })
 export class BattlesComponent {
   @Input() battle: any;
-  @Input() index: number = 0;
-  isOpen: boolean = false;
+
+  constructor(private parseService: ParseService) { }
+
+  showBattleDetails() {
+    console.log(this.battle.battle)
+
+    Swal.fire({
+      title: 'RANK #' + this.battle.battle.rank,
+      html: this.parseService.parseHtml(this.battle),
+      confirmButtonText: 'COOL!',
+      confirmButtonColor: 'var(--primary-color)',
+      showCloseButton: true
+    });
+  }
+  
 }

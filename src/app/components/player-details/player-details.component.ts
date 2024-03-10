@@ -38,7 +38,7 @@ export class PlayerDetailsComponent {
   }
 
   onClubClick() {
-    let clubTag = (this.playerService.player.club.tag).split("#").join("");
+    let clubTag = (this.playerService.player.club.tag).substring(1);
     this.router.navigateByUrl("club/" + clubTag);
   }
 

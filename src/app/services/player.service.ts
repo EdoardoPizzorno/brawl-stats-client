@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataStorageService } from './data-storage.service';
-import { DateParseService } from './date-parse.service';
+import { ParseService } from './parser.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class PlayerService {
   battleLog: any = [];
   trophiesDrawdown: number = 0;
 
-  constructor(private dataStorage: DataStorageService, private dateParse: DateParseService) { }
+  constructor(private dataStorage: DataStorageService, private parseService: ParseService) { }
 
   getPlayer(tag: string) {
     this.dataStorage.sendRequest('GET', '/players/' + tag)
@@ -32,7 +32,7 @@ export class PlayerService {
         this.battleLog = response.data.items;
 
         for (let battle of this.battleLog)
-          this.dateParse.parseDate(battle);
+          this.parseService.parseDate(battle);
 
       })
       .catch((err: any) => {

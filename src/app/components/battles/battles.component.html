@@ -1,4 +1,4 @@
-<div class="battle" (click)="isOpen=!isOpen">
+<div class="battle" (click)="showBattleDetails()">
     <h4>Mode: <u>{{battle.battle.mode}}</u></h4>
     <h4>Type: <u>{{battle.battle.type}}</u></h4>
     <h4>TrophyChange: <p [ngClass]="{red: battle.battle.trophyChange<0, green: battle.battle.trophyChange>=0}">
@@ -9,7 +9,7 @@
         <br>
         {{battle.battleTime.time.hour}}:{{battle.battleTime.time.minute}}
     </p>
-    <div *ngFor="let team of battle.battle.teams" class="team" [ngClass]="{open: isOpen}">
+    <div *ngFor="let team of battle.battle.teams" class="team">
         <div *ngFor="let player of team">
             <div class="player">
                 <h5>{{player.name}}</h5>
