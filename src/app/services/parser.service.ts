@@ -31,6 +31,7 @@ export class ParseService {
     currentBattle.result = currentBattle.result == undefined ? 'not given' : currentBattle.result;
     currentBattle.duration = currentBattle.duration == undefined ? 'not given' : currentBattle.duration;
     currentBattle.map = battle.event.map; let html;
+    currentBattle.rank = currentBattle.rank == undefined ? (battle.event.rank == undefined ? "not given" : currentBattle.rank) : currentBattle.rank;
 
     let playersHtml;
 
@@ -64,13 +65,14 @@ export class ParseService {
   }
 
   private parseTeams(currentBattle: any) {
-    let html = "<h2>Teams</h2>";
+    let html = "<h1>Teams</h1>";
 
-    for (let i = 0; i < currentBattle.teams.length; i++) {
-      html += `<p><strong>Team ${i + 1}:</strong></p>`;
-
-      for (let j = 0; j < currentBattle.teams[i].length; j++) {
-        html += `<p class="wrapper">${currentBattle.teams[i][j].name} - ${currentBattle.teams[i][j].brawler.name}</p>`;
+    let teamCount = 1;
+    for (let team of currentBattle.teams) {
+      html += `<h3>Team #${teamCount++}</h3>`;
+      for (let player of team) {
+        let tag = player["tag"].substring(1);
+        html += `<button class="wrapper" style="margin: 10px" onclick="window.location.href='player/${tag}'">${player.name} - ${player.brawler.name}</button>`;
       }
     }
 
@@ -78,12 +80,12 @@ export class ParseService {
   }
 
   private parsePlayers(currentBattle: any) {
-    let html = "<h2>Players</h2>";
+    let html = "<h1>Players</h1>";
 
-    for (let i = 0; i < currentBattle.players.length; i++) {
-      let player = currentBattle.players[i];
+    let playerCount = 1;
+    for (let player of currentBattle.players) {
       let tag = player["tag"].substring(1);
-      html += `<button class="wrapper" style="margin: 10px" onclick="window.location.href='player/${tag}'">${player.name} - ${player.brawler.name}</button>`;
+      html += `<button class="wrapper" style="margin: 10px" onclick="window.location.href='player/${tag}'"> #${playerCount++} | ${player.name} - ${player.brawler.name}</button>`;
     }
 
     return html;
