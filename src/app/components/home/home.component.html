@@ -1,7 +1,14 @@
 <div style="text-align: center; margin-top: 50px;">
     <h1>INSERISCI TAG</h1>
-    <input type="text" placeholder="Player Tag" [(ngModel)]="playerTag" (keyup.enter)="homeService.onPlayerSearch(playerTag)">
-    <button class="btn btn-warning" (click)="homeService.onPlayerSearch(playerTag)">Search</button>
+
+    <input type="text" placeholder="Player Tag" [(ngModel)]="homeService.playerTag"
+        (keyup.enter)="homeService.onPlayerSearch(homeService.playerTag)">
+    <button class="btn btn-warning" (click)="homeService.onPlayerSearch(homeService.playerTag)">Search</button>
+
+    <select class="form-control" [(ngModel)]="homeService.playerTag"
+        (change)="homeService.onPlayerSearch(homeService.playerTag)" title="LAST PLAYERS SEARCHED">
+        <option *ngFor="let player of homeService.cookiePlayerList" value={{player.tag}}>{{player.name}}</option>
+    </select>
 </div>
 
 <div class="container my-4">

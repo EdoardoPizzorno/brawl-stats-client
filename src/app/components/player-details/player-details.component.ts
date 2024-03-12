@@ -31,7 +31,7 @@ export class PlayerDetailsComponent {
 
       await this.playerService.getPlayer(this.playerTag);
       await this.playerService.getBattleLog(this.playerTag);
-      
+
       this.playerName = this.playerService.player.name;
 
       if (this.playerTag != this.cookiePlayerTag || this.playerName != this.cookiePlayerName)
