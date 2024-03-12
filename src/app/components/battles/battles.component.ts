@@ -21,5 +21,5 @@ export class BattlesComponent {
       showCloseButton: true
     });
   }
-  
+
 }

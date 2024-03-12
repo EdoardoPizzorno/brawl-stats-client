@@ -13,20 +13,25 @@ export class PlayerService {
 
   constructor(private dataStorage: DataStorageService, private parseService: ParseService) { }
 
-  getPlayer(tag: string) {
-    this.dataStorage.sendRequest('GET', '/players/' + tag)
-      .then((response: any) => {
-        this.player = response.data;
+  async getPlayer(tag: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.dataStorage.sendRequest('GET', '/players/' + tag)
+        .then((response: any) => {
+          this.player = response.data;
 
-        if (this.player.trophies == this.player.highestTrophies) this.trophiesDrawdown = 0;
-        else this.trophiesDrawdown = -(Math.round((this.player.highestTrophies) / (this.player.trophies)), 2) / 100;
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+          if (this.player.trophies == this.player.highestTrophies) this.trophiesDrawdown = 0;
+          else this.trophiesDrawdown = -(Math.round((this.player.highestTrophies) / (this.player.trophies)), 2) / 100;
+
+          resolve();
+        })
+        .catch((err: any) => {
+          console.log(err);
+          reject();
+        });
+    });
   }
 
-  getBattleLog(tag: string) {
+  async getBattleLog(tag: string) {
     this.dataStorage.sendRequest('GET', '/players/' + tag + '/battlelog')
       .then((response: any) => {
         this.battleLog = response.data.items;

@@ -10,31 +10,38 @@ import { PlayerService } from '../../services/player.service';
 })
 export class PlayerDetailsComponent {
 
+  playerName: string = '';
   playerTag: string = '';
+  cookiePlayerName: string = '';
   cookiePlayerTag: string = '';
 
   constructor(private route: ActivatedRoute, private router: Router, private cookieService: CookieService, public playerService: PlayerService) {
     this.cookiePlayerTag = this.cookieService.get('PLAYER_TAG');
+    this.cookiePlayerName = this.cookieService.get('PLAYER_NAME');
 
-    if (this.cookiePlayerTag != '') {
+    if (this.cookiePlayerTag != '' && this.cookiePlayerName != '') {
       this.playerTag = this.cookiePlayerTag;
+      this.playerName = this.cookiePlayerName;
     }
   }
 
   ngOnInit() {
-    this.route.params.subscribe((params: any) => {
+    this.route.params.subscribe(async (params: any) => {
       this.playerTag = params.tag;
+
+      await this.playerService.getPlayer(this.playerTag);
+      await this.playerService.getBattleLog(this.playerTag);
       
-      this.playerService.getPlayer(this.playerTag);
-      this.playerService.getBattleLog(this.playerTag);
-      
-      if (this.playerTag != this.cookiePlayerTag)
+      this.playerName = this.playerService.player.name;
+
+      if (this.playerTag != this.cookiePlayerTag || this.playerName != this.cookiePlayerName)
         this.setCookie();
     });
   }
 
   setCookie() {
     this.cookieService.set('PLAYER_TAG', this.playerTag, 365, '/');
+    this.cookieService.set('PLAYER_NAME', this.playerName, 365, '/');
   }
 
   onClubClick() {
